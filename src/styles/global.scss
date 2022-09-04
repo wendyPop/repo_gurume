@@ -1,0 +1,30 @@
+body {
+  background-color: pink!important;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  background-color: red;
+  width: 100%;
+  height: 100px;
+}
+
+main {
+  text-align: center;
+  padding-top: 100px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: blue;
+}

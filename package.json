@@ -1,0 +1,24 @@
+{
+  "name": "choiroha_gurume_list",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "server": "json-server --watch ./src/server/db.json -c ./src/server/config.json"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "next": "12.2.5",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "json-server": "^0.17.0",
+    "sass": "^1.54.8"
+  }
+}
