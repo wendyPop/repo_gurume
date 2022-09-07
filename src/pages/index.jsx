@@ -1,39 +1,56 @@
-import React, { useEffect } from 'react'
-import {Badge, Button, Stack} from 'react-bootstrap'
+import React, {useState} from 'react'
+import { Card, Col, Container, Row} from 'react-bootstrap'
 import styles from "@/css/Home.module.scss"
+import Modal from "@/compo/Modal"
 
-const Home = () => {
+const Home = ({ posts }) => {
 
-	// 본문 목록조회
-	/*useEffect(() => {
-		Promise.all([
-			fetch('http://localhost:9000/stores').then((res) => res.json()),
-			fetch('http://localhost:9000/survey').then((res) => res.json())
-		])
-			.then(([answer, survey]) => {
-				setAnswer(answer.data)
-				setSurvey(survey)
-			})
-	}, [])*/
+	const [ show, setShow ] = useState(false)
+	const [ detail, setDetail ] = useState({})
+	const hideModal = () => {
+		setShow(false)
+	}
 
+	const openModal = v => {
+		setShow(true)
+		setDetail(( prev ) => {
+			return { ...prev, ...v }
+		})
+	}
 
 	return (
 		<>
+			<Modal show={ show} onHide={ hideModal } detailInfo={ detail } />
 			<main>
-				<div className={styles.test}>본문</div>
-				<Badge pill bg="success">완료</Badge>
-
-				<Stack direction="horizontal" gap={2}>
-					<Button as="a" variant="primary">
-						Button as link
-					</Button>
-					<Button as="a" variant="success">
-						Button as link
-					</Button>
-				</Stack>
+				<h2 className="text-lg-start mb-lg-5">EAT</h2>
+				<Container>
+					<Row className="justify-content-md-center">
+						{ posts && posts.map((v, i) => {
+							return (
+								<Col lg="3">
+									<Card className={`${styles.card} bg-dark text-white m-5`} onClick={ () => openModal(v) }>
+										<Card.Img src={v.thumb} alt="Card image"/>
+									</Card>
+								</Col>
+							)
+						})
+						}
+					</Row>
+				</Container>
 			</main>
 		</>
 	)
 }
+
+export async function getStaticProps() {
+	const res = await fetch('http://localhost:9000/stores/')
+	const posts = await res.json()
+	return {
+		props: {
+			posts
+		}
+	}
+}
+
 
 export default Home

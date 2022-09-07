@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "json-server --watch ./src/server/db.json -c ./src/server/config.json"
+    "server": "json-server --watch ./src/server/db.json -p 9000 db.json"
   },
   "dependencies": {
     "bootstrap": "^5.2.0",
